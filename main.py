@@ -17,6 +17,14 @@ import eel
 # exporter.export_to_stl('7.stl', True)
 eel.init('web')
 
+
+@eel.expose
+def generate(width, height, seed):
+    maze_generator = EllerMazeGenerator(width, height, seed)
+    maze_generator.generate()
+    return maze_generator.get_maze_matrix()
+
+
 def main():
     eel.start('index.html', size=(1200, 800))
 

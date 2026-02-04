@@ -124,7 +124,7 @@ class Maze3DExporter:
             f.write('endsolid maze_3D\n')
 
     def _export_to_stl_binary(self, file_name: str):
-        '''Экспорт в текстовый stl (чтобы мы могли его прочитать)'''
+        '''Экспорт в цифровой stl (чтобы он весил меньше)'''
         with open(file_name, 'wb') as f:
             header = b'3D Maze Model' + b' ' * 67
             f.write(header)
