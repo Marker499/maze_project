@@ -9,10 +9,40 @@
 <body>
     <main>
         <div id="maze"></div>
-        <input type="number" class="maze-input" id="width" placeholder="Ширина">
-        <input type="number" class="maze-input" id="height" placeholder="Высота">
-        <input type="number" class="maze-input" id="seed" placeholder="Сид генерации">
-        <button class="generate-button">Сгенерировать</button>
+        <section class="generate">
+            <input type="number" class="maze-input" id="width" placeholder="Ширина">
+            <input type="number" class="maze-input" id="height" placeholder="Высота">
+            <input type="number" class="maze-input" id="seed" placeholder="Сид генерации">
+            <button id="generate-button">Сгенерировать</button>
+        </section>
+        <section class="export hidden">
+            <div class="section-row">
+                <label for="cell_size">Ширина клетки (мм)</label>
+                <label for="wall_height">Высота стен (мм)</label>
+            </div>
+            <div class="section-row">
+                <input type="number" class="maze-input" value="10" id="cell_size">
+                <input type="number" class="maze-input" value="5" id="wall_height">
+            </div>
+            <div class="section-row">
+                <label for="wall_thickness">Толщина стен (мм)</label>
+                <label for="floor_thickness">Толщина пола (мм)</label>
+            </div>
+            <div class="section-row">
+                <input type="number" class="maze-input" value="1" id="wall_thickness">
+                <input type="number" class="maze-input" value="1" id="floor_thickness">
+            </div>
+            <div class="row">
+                <label for="binary">Бинарный формат</label>
+                <input type="radio" name="is_ascii" id="binary" class="is_ascii">
+                <label for="ascii">Символьный (ASCII) формат</label>
+                <input type="radio" name="is_ascii" id="ascii" class="is_ascii">
+            </div>
+            <div class="section-row">
+                <button id="regenerate-button">Сгенерировать еще раз</button>
+                <button id="export-button">Экспортировать в STL</button>
+            </div>
+        </section>
     </main>
     <script src="./index.js"></script>
 </body>
