@@ -43,13 +43,14 @@ const exportToStl = async (
 
 const renderMaze = (maze) => {
     mazeElement.innerHTML = '';
-    maze.forEach(row => {
+    maze.forEach((row, y) => {
         const rowElement = document.createElement('div');
         rowElement.classList.add('row');
-        row.forEach(cell => {
+        row.forEach((cell, x) => {
             const cellElement = document.createElement('div');
             cellElement.classList.add('cell');
-            if(cell === 1){
+            const isEntranceOrExit = (x === 0 && y === 1) || (x === row.length - 1 && y === maze.length - 2);
+            if(cell === 1 && !isEntranceOrExit){
                 cellElement.classList.add('wall');
             }
             rowElement.appendChild(cellElement);
