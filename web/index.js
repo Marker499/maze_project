@@ -43,20 +43,29 @@ const exportToStl = async (
 
 const renderMaze = (maze) => {
     mazeElement.innerHTML = '';
-    maze.forEach((row, y) => {
+    let y = 0;
+    let mazeInterval = setInterval(() => {
+        if(y === maze.length - 1) clearInterval(mazeInterval);
+        let row = maze[y];
         const rowElement = document.createElement('div');
         rowElement.classList.add('row');
-        row.forEach((cell, x) => {
+        let x = 0;
+        let rowTimer = setInterval(() => {
+            if(x === row.length - 1) clearInterval(rowTimer);
             const cellElement = document.createElement('div');
             cellElement.classList.add('cell');
             const isEntranceOrExit = (x === 0 && y === 1) || (x === row.length - 1 && y === maze.length - 2);
-            if(cell === 1 && !isEntranceOrExit){
+            if(row[x] === 1 && !isEntranceOrExit){
                 cellElement.classList.add('wall');
             }
             rowElement.appendChild(cellElement);
-        })
+            x++;
+        }, 200);
+        // row.forEach((cell, x) => {
+        // })
         mazeElement.appendChild(rowElement);
-    })
+        y++;
+    }, 200)
 }
 
 generateButton.addEventListener('click', () => {
